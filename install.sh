@@ -19,8 +19,8 @@ cd $HOME
 export SUDO_ASKPASS=/bin/true
 
 # I'd like to use fish, please
-sudo apt-get install -y fish
-sudo chsh -s /usr/bin/fish $USER
+# sudo apt-get install -y fish
+# sudo chsh -s /usr/bin/fish $USER
 
 # Install fzf
 FZF_VERSION=0.30.0
