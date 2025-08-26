@@ -1,0 +1,11 @@
+[push]
+	autoSetupRemote = true
+[diff "sopsdiffer"]
+	textconv = sops -d --config /dev/null
+[init]
+	defaultBranch = main
+[user]
+	email = ava.gaiety@revzilla.com
+	name = Ava Gaiety W.
+[alias]
+  ticket = "!ticket() { git switch -C ava-gaiety-comoto/$1;}; ticket"
