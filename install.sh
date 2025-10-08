@@ -27,6 +27,10 @@ wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
 bat cache --build
 
+# zsh config
+rm ~/.zshrc
+curl https://raw.githubusercontent.com/ava-gaiety-comoto/dotfiles/refs/heads/main/.zshrc -o ~/.zshrc
+
 # Install fzf
 FZF_VERSION=0.30.0
 curl -L https://github.com/junegunn/fzf/releases/download/${FZF_VERSION}/fzf-${FZF_VERSION}-linux_amd64.tar.gz | tar xzC $HOME/bin
