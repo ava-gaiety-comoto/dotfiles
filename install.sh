@@ -18,12 +18,8 @@ cd $HOME
 # Make passwordless sudo work
 export SUDO_ASKPASS=/bin/true
 
-# I'd like to use fish, please
-# sudo apt-get install -y fish
-# sudo chsh -s /usr/bin/fish $USER
-
 # Bat
-
+apk add bat
 mkdir -p "$(bat --config-dir)/themes"
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
@@ -41,9 +37,12 @@ sudo apt-get install -y libfuse2
 curl -L -o $HOME/bin/nvim https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim.appimage
 chmod a+x $HOME/bin/nvim
 
+# Tasks
+sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
+curl https://raw.githubusercontent.com/ava-gaiety-comoto/dotfiles/refs/heads/main/Taskfile.yml -o /workspaces/Taskfile.yml
+
 # Personal Dotfiles
 git clone https://git.basking.monster/gaiety/dotfiles.git dotfiles
 cd dotfiles
 ln -s "$(pwd)/nvim" ~/.config/nvim
-ln -s "$(pwd)/fish" ~/.config/fish
 cd $HOME
