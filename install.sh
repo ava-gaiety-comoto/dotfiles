@@ -28,8 +28,7 @@ wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/
 bat cache --build
 
 # zsh config
-rm ~/.zshrc
-curl https://raw.githubusercontent.com/ava-gaiety-comoto/dotfiles/refs/heads/main/.zshrc -o ~/.zshrc
+mv .zshrc $HOME/.zshrc
 
 # Install fzf
 FZF_VERSION=0.30.0
@@ -43,7 +42,7 @@ chmod a+x $HOME/bin/nvim
 
 # Tasks
 sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
-curl https://raw.githubusercontent.com/ava-gaiety-comoto/dotfiles/refs/heads/main/Taskfile.yml -o /workspaces/Taskfile.yml
+mv Taskfile.yml /workspaces/Taskfile.yml
 
 # Personal Dotfiles
 git clone https://git.basking.monster/gaiety/dotfiles.git dotfiles
