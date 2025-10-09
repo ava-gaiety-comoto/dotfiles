@@ -16,8 +16,11 @@ echo >&2 "====================================================================="
 # Make passwordless sudo work
 export SUDO_ASKPASS=/bin/true
 
+# Prepare to install dependencies
+sudo apk update
+
 # Bat
-apk add bat
+sudo apk add bat
 mkdir -p "$(bat --config-dir)/themes"
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
@@ -35,12 +38,11 @@ curl -L https://github.com/junegunn/fzf/releases/download/${FZF_VERSION}/fzf-${F
 
 # Install neovim
 NVIM_VERSION=0.7.0
-sudo apt-get install -y libfuse2
 curl -L -o $HOME/bin/nvim https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim.appimage
 chmod a+x $HOME/bin/nvim
 
 # Tasks
-sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
+sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
 mv ./Taskfile.yml /workspaces/Taskfile.yml
 
 # Personal Dotfiles
