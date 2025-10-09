@@ -22,6 +22,12 @@ sudo apk update
 # mise (alternative to `asdf`
 sudo apk add mise
 
+# zoxide
+sudo apk add zoxide
+
+# zsh-autocompletions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 # Bat
 sudo apk add bat
 
@@ -39,8 +45,6 @@ cp ./.gitconfig $HOME/.gitconfig
 
 # Install fzf
 mise use --global fzf@latest
-#FZF_VERSION=0.30.0
-#curl -L https://github.com/junegunn/fzf/releases/download/${FZF_VERSION}/fzf-${FZF_VERSION}-linux_amd64.tar.gz | tar xzC $HOME/bin
 
 # Install neovim
 mise use --global neovim@latest
