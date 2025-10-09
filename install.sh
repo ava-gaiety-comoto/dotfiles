@@ -56,7 +56,9 @@ mise use --global fzf@latest
 # Tasks
 sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
 sudo mv bin/task /bin/task
-mv ./Taskfile.yml /workspaces/Taskfile.yml
+cp ./Taskfile.yml /workspaces/
+cp ./docker-containers.sh /workspaces/
+chmod +x /workspaces/docker-containers.sh
 
 # Personal Dotfiles
 git clone https://git.basking.monster/gaiety/dotfiles.git $HOME/dotfiles
