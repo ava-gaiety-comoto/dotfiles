@@ -1,136 +1,90 @@
-# Custom Shell Initialization Scripts
-# ----
-# Exports
+# Environment Necessary Exports
 export TERM=vt100 # Ensure terminal is connected properly (fixes several potential bugs with some terminal emulators)
 export COMOTO_PROJECT_ROOT="/workspaces" # Required by bash_functions.sh
 
-# sh /workspaces/dev-hub/setup.sh 
+# Run setup.sh, at least once `sh /workspaces/dev-hub/setup.sh`
 if [ ! -f ~/.setup_has_run ]
 then
   echo "⌛ Running setup.sh"
   sh /workspaces/dev-hub/setup.sh
   touch ~/.setup_has_run
-fi # vscode does this automatically, so we run it here as well
+fi
 
+# bash_functions.sh
 echo "👌 Sourcing bash_functions.sh"
 source /workspaces/monorepo/zlaverse/support/bash_functions.sh # allows us to call things like `cg-load-test-schema`
 
-# Aliases
-alias kick="echo ⌛ Running setup.sh && cd /workspaces/dev-hub/ && ./setup.sh && cd - && echo 🍱 Full Resarting Docker && docker compose down && docker compose up -d"
-alias format="docker exec -it dev-cycle-gear-redline-webapp-1 mix format"
-alias test="docker exec -it dev-cycle-gear-redline-webapp-1 mix test $1"
-alias eslint="docker exec -w /rz/redline/apps/redline_web_store -it dev-cycle-gear-redline-webapp-1 npx eslint"
-
-# Colors
+# Colors fixes
 export LS_COLORS='fi=00:mi=00:mh=00:ln=01;36:or=01;31:di=01;34:ow=04;01;34:st=34:tw=04;34:'
 LS_COLORS+='pi=01;33:so=01;33:do=01;33:bd=01;33:cd=01;33:su=01;35:sg=01;35:ca=0'
 
-cd /workspaces/monorepo/ # Move to directory most used (for me, that is monorepo)
-# ----
+# Move to directory most used (for me, that is monorepo)
+cd /workspaces/monorepo/
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
-# Path to your Oh My Zsh installation.
+# oh my zsh
 export ZSH="$HOME/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="gnzh" # set by `omz`
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME="devcontainers"
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+MAGIC_ENTER_GIT_COMMAND='git status -u . | bat --style=plain -l=sh'
+MAGIC_ENTER_OTHER_COMMAND='ls -lh . | bat --paging=never -l=ls'
+plugins=(git gh rake zsh-autosuggestions rails ssh mise mix bun docker docker-compose magic-enter sudo)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+export EDITOR='nvim'
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
-
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 DISABLE_AUTO_UPDATE=true
 DISABLE_UPDATE_PROMPT=true
+
+# Mise activate
+export MISE_SHELL=zsh
+export __MISE_ORIG_PATH="$PATH"
+
+mise() {
+  local command
+  command="${1:-}"
+  if [ "$#" = 0 ]; then
+    command mise
+    return
+  fi
+  shift
+
+  case "$command" in
+  deactivate|shell|sh)
+    # if argv doesn't contains -h,--help
+    if [[ ! " $@ " =~ " --help " ]] && [[ ! " $@ " =~ " -h " ]]; then
+      eval "$(command mise "$command" "$@")"
+      return $?
+    fi
+    ;;
+  esac
+  command mise "$command" "$@"
+}
+
+_mise_hook() {
+  eval "$(mise hook-env -s zsh)";
+}
+typeset -ag precmd_functions;
+if [[ -z "${precmd_functions[(r)_mise_hook]+1}" ]]; then
+  precmd_functions=( _mise_hook ${precmd_functions[@]} )
+fi
+typeset -ag chpwd_functions;
+if [[ -z "${chpwd_functions[(r)_mise_hook]+1}" ]]; then
+  chpwd_functions=( _mise_hook ${chpwd_functions[@]} )
+fi
+
+if [ -z "${_mise_cmd_not_found:-}" ]; then
+    _mise_cmd_not_found=1
+    [ -n "$(declare -f command_not_found_handler)" ] && eval "${$(declare -f command_not_found_handler)/command_not_found_handler/_command_not_found_handler}"
+
+    function command_not_found_handler() {
+        if mise hook-not-found -s zsh -- "$1"; then
+          _mise_hook
+          "$@"
+        elif [ -n "$(declare -f _command_not_found_handler)" ]; then
+            _command_not_found_handler "$@"
+        else
+            echo "zsh: command not found: $1" >&2
+            return 127
+        fi
+    }
+fi
