@@ -22,9 +22,6 @@ sudo apk update
 # mise (alternative to `asdf`
 sudo apk add mise
 
-# atuin
-curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
-
 # zoxide
 sudo apk add zoxide
 
