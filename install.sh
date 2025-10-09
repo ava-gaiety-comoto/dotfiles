@@ -48,7 +48,10 @@ cp ./.gitconfig $HOME/.gitconfig
 mise use --global fzf@latest
 
 # Install neovim
-mise use --global neovim@latest
+# mise use --global neovim@latest #throwing weird alpine only issues
+NVIM_VERSION=0.11.4
+curl -L -o $HOME/bin/nvim https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim.appimage
+chmod a+x $HOME/bin/nvim
 
 # Tasks
 sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
