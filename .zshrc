@@ -42,6 +42,10 @@ source $ZSH/oh-my-zsh.sh
 DISABLE_AUTO_UPDATE=true
 DISABLE_UPDATE_PROMPT=true
 
+# ---------------------
+# atuin
+source $HOME/.atuin/bin/env
+
 # =============================================================================
 #
 # Utility functions for zoxide.
