@@ -19,6 +19,9 @@ export SUDO_ASKPASS=/bin/true
 # Prepare to install dependencies
 sudo apk update
 
+# mise (alternative to `asdf`
+sudo apk add mise
+
 # Bat
 sudo apk add bat
 
@@ -35,13 +38,12 @@ cp ./.zshrc $HOME/.zshrc
 cp ./.gitconfig $HOME/.gitconfig
 
 # Install fzf
-FZF_VERSION=0.30.0
-curl -L https://github.com/junegunn/fzf/releases/download/${FZF_VERSION}/fzf-${FZF_VERSION}-linux_amd64.tar.gz | tar xzC $HOME/bin
+mise use --global fzf@latest
+#FZF_VERSION=0.30.0
+#curl -L https://github.com/junegunn/fzf/releases/download/${FZF_VERSION}/fzf-${FZF_VERSION}-linux_amd64.tar.gz | tar xzC $HOME/bin
 
 # Install neovim
-NVIM_VERSION=0.7.0
-curl -L -o $HOME/bin/nvim https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim.appimage
-chmod a+x $HOME/bin/nvim
+mise use --global neovim@latest
 
 # Tasks
 sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
