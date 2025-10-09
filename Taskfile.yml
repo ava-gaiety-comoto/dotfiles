@@ -2,11 +2,6 @@
 
 version: '3'
 
-vars:
-  # DOCKER_DEFAULT:
-  #   sh: ./docker-containers.sh | fzf
-  DOCKER_DEFAULT: dev-cycle-gear-redline-webapp-1
-
 tasks:
   default:
     cmds:
@@ -19,10 +14,6 @@ tasks:
     cmds:
       - echo WIP note to self, pull username from git as a dynamic var
 
-  wip:
-    cmds:
-      - sh ./docker-containers.sh | fzf
-
   logs:
     desc: Follows docker log output
     summary: |
@@ -30,7 +21,7 @@ tasks:
       piped through color coding with `bat`
     aliases: [log]
     cmds:
-      - cmd: docker logs --follow {{.DOCKER_DEFAULT}} |  bat --paging=never --style=plain -l log
+      - cmd: docker logs --follow $(sh /workspaces/docker-containers.sh | fzf) |  bat --paging=never --style=plain -l log
         ignore_error: true
         interactive: true
 
@@ -41,16 +32,15 @@ tasks:
       Can optionally take a test file:
       `task test -- tests/ui/ui_text.exs`
     cmds:
-      - docker exec -it {{.DOCKER_DEFAULT}} mix test {{.CLI_ARGS}}
+      - docker exec -it $(sh /workspaces/docker-containers.sh | fzf) mix test {{.CLI_ARGS}}
 
-  kick:
-    desc: Runs `setup.sh` and a full Docker restart
+  restart:
+    desc: Runs a full Docker restart
     summary: |
       Runs `/workspaces/dev-hub/setup.sh`
       then fully takes down then up's Docker containers.
       Safe to run multiple times a day if you're patient.
     cmds:
-      - bash /workspaces/dev-hub/setup.sh
       - docker compose down
       - docker compose up -d
 
@@ -61,4 +51,4 @@ tasks:
       Supports `task eslint -- --fix` to automatically fix what is possible.
       Remember to changes after running!
     cmds:
-      - docker exec -w /rz/redline/apps/redline_web_store -it {{.DOCKER_DEFAULT}} npx eslint {{.CLI_ARGS}}
+      - docker exec -w /rz/redline/apps/redline_web_store -it dev-cycle-gear-redline-webapp-1 npx eslint {{.CLI_ARGS}}
