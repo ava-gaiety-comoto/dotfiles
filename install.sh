@@ -13,8 +13,6 @@ echo >&2 " USER        $USER"
 echo >&2 " HOME        $HOME"
 echo >&2 "====================================================================="
 
-cd $HOME
-
 # Make passwordless sudo work
 export SUDO_ASKPASS=/bin/true
 
@@ -27,8 +25,9 @@ wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
 bat cache --build
 
-# zsh config
-mv .zshrc $HOME/.zshrc
+# basic dotfiles config
+mv ./.zshrc $HOME/.zshrc
+mv ./.gitconfig $HOME/.gitconfig
 
 # Install fzf
 FZF_VERSION=0.30.0
@@ -42,10 +41,9 @@ chmod a+x $HOME/bin/nvim
 
 # Tasks
 sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
-mv Taskfile.yml /workspaces/Taskfile.yml
+mv ./Taskfile.yml /workspaces/Taskfile.yml
 
 # Personal Dotfiles
-git clone https://git.basking.monster/gaiety/dotfiles.git dotfiles
-cd dotfiles
+git clone https://git.basking.monster/gaiety/dotfiles.git $HOME/dotfiles
+cd $HOME/dotfiles
 ln -s "$(pwd)/nvim" ~/.config/nvim
-cd $HOME
