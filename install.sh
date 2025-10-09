@@ -47,10 +47,11 @@ cp ./.gitconfig $HOME/.gitconfig
 # Install fzf
 mise use --global fzf@latest
 
-# Install neovim
+# Install neovim v0.11.4, not working right now...
 # mise use --global neovim@latest #throwing weird alpine only issues
-sudo rm -rf /usr/bin/nvim
-sudo apk add neovim
+# sudo rm -rf /usr/bin/nvim
+# sudo apk add neovim
+# curl -Lo neovim.tar.gz https://github.com/neovim/neovim/releases/download/v0.11.4/nvim-linux-x86_64.tar.gz
 
 # Tasks
 sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
