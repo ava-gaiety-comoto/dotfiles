@@ -25,7 +25,8 @@ sudo apk add mise
 # zoxide
 sudo apk add zoxide
 
-# zsh-autocompletions
+# zsh
+sudo apk add zsh-vcs
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # Bat
