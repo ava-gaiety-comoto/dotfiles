@@ -21,6 +21,7 @@ sudo apk update
 
 # Bat
 sudo apk add bat
+
 mkdir -p "$(bat --config-dir)/themes"
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme
 wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
@@ -29,8 +30,9 @@ wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/
 bat cache --build
 
 # basic dotfiles config
-mv ./.zshrc $HOME/.zshrc
-mv ./.gitconfig $HOME/.gitconfig
+cp ./.bat "$(bat --config-dir)/config"
+cp ./.zshrc $HOME/.zshrc
+cp ./.gitconfig $HOME/.gitconfig
 
 # Install fzf
 FZF_VERSION=0.30.0
