@@ -35,16 +35,10 @@ ZSH_THEME="nicoulaj" # set by `omz`
 MAGIC_ENTER_GIT_COMMAND='git status -u . | bat --style=plain -l=sh'
 MAGIC_ENTER_OTHER_COMMAND='ls -lh . | bat --paging=never -l=ls'
 plugins=(git gh rake zsh-autosuggestions rails ssh mise mix bun docker docker-compose magic-enter sudo)
-eval "$(atuin init zsh)"
-
 source $ZSH/oh-my-zsh.sh
 
 DISABLE_AUTO_UPDATE=true
 DISABLE_UPDATE_PROMPT=true
-
-# ---------------------
-# atuin
-source $HOME/.atuin/bin/env
 
 # =============================================================================
 #
