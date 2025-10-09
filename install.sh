@@ -45,6 +45,7 @@ chmod a+x $HOME/bin/nvim
 
 # Tasks
 sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d
+sudo mv bin/task /bin/task
 mv ./Taskfile.yml /workspaces/Taskfile.yml
 
 # Personal Dotfiles
