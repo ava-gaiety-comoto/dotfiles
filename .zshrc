@@ -28,7 +28,6 @@ LS_COLORS+='pi=01;33:so=01;33:do=01;33:bd=01;33:cd=01;33:su=01;35:sg=01;35:ca=0'
 # Move to directory most used (for me, that is monorepo)
 cd /workspaces/monorepo/
 
-
 # ---------------------
 # oh my zsh
 export ZSH="$HOME/.oh-my-zsh"
