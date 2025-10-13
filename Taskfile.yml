@@ -34,6 +34,22 @@ tasks:
     cmds:
       - docker exec -it $(sh /workspaces/docker-containers.sh | fzf) mix test {{.CLI_ARGS}}
 
+  start:
+    desc: Runs a full Docker start
+    summary: |
+      Start the engines!
+    aliases: [up]
+    cmds:
+      - docker compose up -d
+
+  stop:
+    desc: Runs a full Docker stop
+    summary: |
+      Hit the brakes!!
+    aliases: [down]
+    cmds:
+      - docker compose down
+
   restart:
     desc: Runs a full Docker restart
     summary: |
@@ -43,6 +59,14 @@ tasks:
     cmds:
       - docker compose down
       - docker compose up -d
+
+  'migrate:up':
+    cmds:
+      - docker compose exec -u deploy ecom-webapp bash -lc rake db:migrate:up
+
+  'migrate:down':
+    cmds:
+      - docker compose exec -u deploy ecom-webapp bash -lc rake db:migrate:down
 
   eslint:
     desc: Runs Eslint against JavaScript files
