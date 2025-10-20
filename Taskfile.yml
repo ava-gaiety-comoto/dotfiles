@@ -8,28 +8,14 @@ tasks:
       - task --list-all
     silent: true
 
-  wake:
-    desc: Check status of running environment
-    summary: |
-      Currently assumes `task up` has happened,
-      checks status code of environment
-    aliases: [status]
-    cmds:
-      - until [ $(curl -L --write-out '%{http_code}' --silent --output /dev/null https://glorious-doodle-7v49rvx44qxv27gx-80.app.github.dev/) == 200 ]; do "Still waking up..."; done; echo "Awake! \`gh cs ports\` to find URL's"
-
-  git:branch:
-    vars:
-      PREFIXES: [RM, RPM, MRKT, NERD]
-    cmds:
-      - echo WIP note to self, pull username from git as a dynamic var
-
-  git:switch:
-    desc: Change git branch
-    summary: |
-      No need to worry about the prefix
-      `task git:switch -- EXAMPLE-###`
-    cmds:
-      - git switch $(git branch | grep {{.CLI_ARGS}})
+#  wake:
+#    desc: Check status of running environment
+#    summary: |
+#      Currently assumes `task up` has happened,
+#      checks status code of environment
+#    aliases: [status]
+#    cmds:
+#      - until [ $(curl -L --write-out '%{http_code}' --silent --output /dev/null https://glorious-doodle-7v49rvx44qxv27gx-80.app.github.dev/) == 200 ]; do "Still waking up..."; done; echo "Awake! \`gh cs ports\` to find URL's"
 
   logs:
     desc: Follows docker log output
