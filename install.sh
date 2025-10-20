@@ -19,8 +19,11 @@ export SUDO_ASKPASS=/bin/true
 # Prepare to install dependencies
 sudo apk update
 
-# mise (alternative to `asdf`
+# mise (alternative to `asdf`)
 sudo apk add mise
+
+# zellij (alternative to `tmux`)
+sudo apk add zellij
 
 # zoxide
 sudo apk add zoxide
