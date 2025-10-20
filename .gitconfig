@@ -1,12 +1,13 @@
 [push]
-	autoSetupRemote = true
+  autoSetupRemote = true
 [diff "sopsdiffer"]
-	textconv = sops -d --config /dev/null
+  textconv = sops -d --config /dev/null
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [user]
-	email = ava.gaiety@revzilla.com
-	name = Ava Gaiety W.
+  email = ava.gaiety@revzilla.com
+  name = Ava Gaiety W.
 [alias]
-  ticket = "!ticket() { git switch -C ava-gaiety-comoto/$1;}; ticket"
+  start = "!ticket_new() { git switch -C ava-gaiety-comoto/$1;}; ticket_new"
+  ticket = "!ticket() { git switch $(git branch | grep -iF $1); }; ticket"
   update = "!update() { git fetch && git merge master --no-edit; }; update"
