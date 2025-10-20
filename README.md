@@ -2,7 +2,12 @@
 For Codespaces
 https://docs.github.com/codespaces/setting-your-user-preferences/personalizing-github-codespaces-for-your-account#dotfiles
 
-Adds `task`, `bat`, `git ticket COOL-123`, `git update`, `fzf`, my personal dotfiles for NeoVim etc
+Adds `task`, `bat`, `fzf`, my personal dotfiles for NeoVim etc
+
+Useful Comoto workflow git aliases:
+
+- `git start NERD-xxx` creates a properly named branch
+- `git ticket NERD-xxx` switches to a branch regardless of what user made it / the branch prefix
 
 ## Forking this Repository
 
