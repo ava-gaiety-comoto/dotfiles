@@ -71,6 +71,14 @@ tasks:
     cmds:
       - docker compose exec -u deploy ecom-webapp bash -lc rake db:migrate:down
 
+  format:
+    desc: Runs `redline-format`
+    summary: |
+      Cleans up formatting in Elixir
+      Similar to running `mix format` on a local environment
+    cmds:
+      - bash redline-format
+
   eslint:
     desc: Runs Eslint against JavaScript files
     summary: |
