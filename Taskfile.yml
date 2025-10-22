@@ -79,6 +79,14 @@ tasks:
     cmds:
       - bash redline-format
 
+  compile:
+    desc: Runs `redline-mix compile --warnings-as-errors`
+    summary: |
+      Surfaces warnings, errors, and
+      helps debug CI issues
+    cmds:
+      - bash redline-mix compile --warnings-as-errors
+
   eslint:
     desc: Runs Eslint against JavaScript files
     summary: |
