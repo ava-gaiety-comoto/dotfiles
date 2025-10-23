@@ -32,7 +32,7 @@ cd /workspaces/monorepo/
 # oh my zsh
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="nicoulaj" # set by `omz`
-MAGIC_ENTER_GIT_COMMAND='git status -u . | bat --style=plain -l=sh'
+MAGIC_ENTER_GIT_COMMAND='git status -u . | bat --style=plain -l=log'
 MAGIC_ENTER_OTHER_COMMAND='ls -lh . | bat --paging=never -l=ls'
 plugins=(git gh rake zsh-autosuggestions rails ssh mise mix bun docker docker-compose magic-enter sudo)
 source $ZSH/oh-my-zsh.sh
