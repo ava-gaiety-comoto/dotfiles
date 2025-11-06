@@ -95,3 +95,11 @@ tasks:
       Remember to changes after running!
     cmds:
       - docker exec -w /rz/redline/apps/redline_web_store -it dev-cycle-gear-redline-webapp-1 npx eslint {{.CLI_ARGS}}
+
+  dialyzer:
+    desc: Runs Mix Dialyzer
+    summary: |
+      Runs `mix dialyzer` against an elixir project in a Docker container.
+      Commonly you may want `dev-revzilla-redline-webapp-1`
+    cmds:
+      - docker exec -it $(sh /workspaces/docker-containers.sh | fzf) mix dialyzer
