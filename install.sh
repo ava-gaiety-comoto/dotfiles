@@ -67,3 +67,11 @@ chmod +x /workspaces/docker-containers.sh
 git clone https://git.basking.monster/gaiety/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles
 ln -s "$(pwd)/nvim" ~/.config/nvim
+
+# Fix FZF
+sudo apk del fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+# Install bat
+sudo apk add bat
