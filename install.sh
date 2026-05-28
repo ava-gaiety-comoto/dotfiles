@@ -28,3 +28,11 @@ ln -sf "$(pwd)/.zshrc" ~/.zshrc
 sudo apk del fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+# Comoto Helpers
+git clone git@github.com:ava-gaiety-comoto/comoto-shell-helpers.git $HOME/comoto-shell-helpers
+cd $HOME/comoto-shell-helpers
+chmod +x $HOME/comoto-shell-helpers/**/*.sh
+echo 'alias c="$HOME/comoto-shell-helpers/scripts.sh"' >> ~/.zshrc
+echo 'alias cr="sh $HOME/comoto-shell-helpers/history-read.sh"' >> ~/.zshrc
+echo 'alias cR="sh $HOME/comoto-shell-helpers/history-read.sh -t"' >> ~/.zshrc
