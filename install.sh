@@ -27,7 +27,7 @@ ln -sf "$(pwd)/.zshrc" ~/.zshrc
 # Upgrade FZF
 sudo apk del fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+bash ~/.fzf/install --all
 
 # Comoto Helpers
 git clone git@github.com:ava-gaiety-comoto/comoto-shell-helpers.git $HOME/comoto-shell-helpers
