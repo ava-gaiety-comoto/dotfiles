@@ -6,6 +6,9 @@
 sudo apk update
 sudo apk add zellij zoxide bat mise
 
+# Upgrade NeoVim
+sudo apk add --upgrade --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community neovim
+
 # basic dotfiles config
 cp ./.zshrc $HOME/.zshrc
 cp ./.gitconfig $HOME/.gitconfig
